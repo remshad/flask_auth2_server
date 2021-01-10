@@ -100,6 +100,7 @@ def authorize():
         try:
             grant = authorization.validate_consent_request(end_user=user)
         except OAuth2Error as error:
+            print(error)
             return error.error
         return render_template('authorize.html', user=user, grant=grant)
     if not user and 'username' in request.form:
